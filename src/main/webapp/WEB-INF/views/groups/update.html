@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UPDATE GROUP</title>
+</head>
+<body>
+<form style="margin-left: 600px;margin-top: 20px "
+      action="#"
+      th:action="@{/saveUpdateGroup(companyId=${param.companyId})}"
+      th:object="${group}"
+      method="post">
+
+    <input type="hidden" name="id" th:field="*{id}">
+    <label><input style="margin: 10px;border: 3px blue solid; border-radius: 8px;padding: 7px" type="text" name="groupName" th:field="*{groupName}" placeholder="Group Name"></label>
+    <br><br>
+    <label><input style="margin: 10px;border: 3px blue solid; border-radius: 8px;padding: 7px" type="text" name="dateOfStart" th:field="*{dateOfStart}" placeholder="yyyy-mm-dd"></label>
+    <br><br>
+    <label><input style="margin: 10px;border: 3px blue solid; border-radius: 8px;padding: 7px" type="text" name="dateOfFinish" th:field="*{dateOfFinish}" placeholder="yyyy-mm-dd"></label>
+    <br><br>
+    <th:block th:each="course : ${courses}">
+        <input type="checkbox" name="courses" th:value="${course.id}"/>
+        <label th:text="${course.courseName}"></label>
+    </th:block>
+    <br><br>
+    <input  style="margin:10px; padding: 7px;border-radius: 8px; border: none; border: 3px blue solid" type="submit" value="Update group">
+</form>
+
+</body>
+</html>

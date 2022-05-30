@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MAIN STUDENT</title>
+    <style>
+        table, th, td {
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+<table style="margin-left: 500px; margin-top: 60px;">
+    <tr>
+        <th style="color: blue">Id</th>
+        <th style="color: blue">FirstName</th>
+        <th style="color: blue">LastName</th>
+        <th style="color: blue">Email</th>
+        <th style="color: blue">studyFormat</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tbody th:each="student: ${students}">
+    <tr>
+        <td style="border-radius: 8px;"><p th:text="${student.getId()}"></p></td>
+        <td style="border-radius: 8px;"><p th:text="${student.getFirstName()}"></p></td>
+        <td style="border-radius: 8px;"><p th:text="${student.getLastName()}"></p></td>
+        <td style="border-radius: 8px;"><p th:text="${student.getEmail()}"></p></td>
+        <td style="border-radius: 8px;"><p th:text="${student.getStudyFormat()}"></p></td>
+        <td>
+            <a th:href="@{/students/{id}/edit(id=${student.id},groupId=${param.groupId})}">
+                <input type="submit" value="Update">
+            </a>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/students/{id}/delete(id=${student.id},groupId=${param.groupId})}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<a style=" margin-left: 500px;margin-top: 3px; width: 330px; height: 100px;border-radius: 14px; border: blue solid 2px;padding: 15px; color: blue " th:href="@{/students/newStudent(groupId=${param.groupId})}">Create new Student</a>
+<br>
+<a style=" margin-left: 500px;margin-top: 60px; width: 300px; height: 10px;padding: 15px; color: blue " href="/">Main</a>
+</body>
+</html>

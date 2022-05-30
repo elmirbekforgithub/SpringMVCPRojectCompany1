@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GROUP</title>
+    <style>
+        table, th, td {
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+<table style="margin-left: 500px; margin-top: 60px;">
+    <tr>
+        <th style="color: blue">Id</th>
+        <th style="color: blue">GroupName</th>
+        <th style="color: blue">DateOfStart</th>
+        <th style="color: blue">DateOfFinish</th>
+        <th style="color: blue">Students</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tbody th:each="group : ${groups}">
+    <tr>
+        <td style="border-radius: 8px;" th:text="${group.id}"></td>
+        <td style="border-radius: 8px;" th:text="${group.groupName}"></td>
+        <td style="border-radius: 8px;" th:text="${group.dateOfStart}"></td>
+        <td style="border-radius: 8px;" th:text="${group.dateOfFinish}"></td>
+
+        <td><a th:href="@{/students(groupId=${group.id})}">Students</a>
+        </td>
+        <td style="border-radius: 8px">
+            <a th:href="@{/updateGroup(groupId=${group.id},companyId=${param.companyId})}">
+                <button style="border-radius: 8px">update</button>
+            </a>
+        </td>
+        <td><a th:href="@{/deleteGroup(groupId=${group.id},companyId=${param.companyId})}">
+            <button style="border-radius: 8px">delete</button>
+        </a></td>
+    </tr>
+    </tbody>
+</table>
+<br><br>
+<div><a style=" margin-left: 500px;margin-top: 3px; width: 330px; height: 20px;border-radius: 14px; border: blue solid 2px;padding: 15px; color: blue " th:href="@{/addGroup(companyId=${param.companyId})}">
+    <button>Add group</button>
+</a></div>
+<br>
+<a style=" margin-left: 500px;margin-top: 60px; width: 300px; height: 10px;padding: 15px; color: blue " href="/">Main</a>
+</body>
+</html>

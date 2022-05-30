@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD STUDENT</title>
+</head>
+<body>
+
+<form style="margin-left: 600px;margin-top: 20px" action="#" th:action="@{/students/saveStudent(groupId=${param.groupId})}" th:object="${student}" method="post">
+
+    <input type="hidden" name="id" th:field="*{id}">
+
+    <input style="margin: 10px;border: 3px blue solid; border-radius: 8px; padding: 7px" type="text" name="firstName" th:field="*{firstName}" placeholder="FirstName">
+    <br><br>
+    <input style="margin: 10px;border: 3px blue solid; border-radius: 8px; padding: 7px" type="text" name="lastName" th:field="*{lastName}" placeholder="LastName">
+    <br><br>
+    <input style="margin: 10px;border: 3px blue solid; border-radius: 8px; padding: 7px" type="text" name="email" th:field="*{email}" placeholder="Email">
+    <br><br>
+    <input style="margin: 10px;border: 3px blue solid; border-radius: 8px; padding: 7px" type="text" name="studyFormat" th:field="*{studyFormat}" placeholder="StudyFormat">
+    <br><br>
+    <input style="margin:10px; padding: 7px;border-radius: 8px; border: none; border: 3px blue solid" type="submit" value="Add">
+
+</form>
+
+</body>
+</html>

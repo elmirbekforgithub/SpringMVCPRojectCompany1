@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MAIN TEACHER</title>
+    <style>
+        table, th, td {
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+<table style="margin-left: 500px; margin-top: 60px;">
+    <tr>
+        <th style="color: blue">Id</th>
+        <th style="color: blue">FirstName</th>
+        <th style="color: blue">LastName</th>
+        <th style="color: blue"> email</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tbody th:each="teacher: ${teachers}">
+    <tr>
+        <td style="border-radius: 8px;"><p th:text="${teacher.getId()}"></p></td>
+        <td style="border-radius: 8px;"><p th:text="${teacher.getFirstName()}"></p></td>
+        <td style="border-radius: 8px;"><p th:text="${teacher.getLastName()}"></p></td>
+        <td style="border-radius: 8px;"><p th:text="${teacher.getEmail()}"></p></td>
+        <td>
+            <a th:href="@{/teachers/{id}/edit(id=${teacher.id},courseId=${param.courseId})}">
+                <input type="submit" value="Update"></a>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/teachers/{id}/delete(id=${teacher.id},courseId=${param.courseId})}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<a style=" margin-left: 500px;margin-top: 3px; width: 330px; height: 100px;border-radius: 14px; border: blue solid 2px;padding: 15px; color: blue " th:href="@{/teachers/newTeacher(courseId=${param.courseId})}">Create new Teacher</a>
+<br>
+<br>
+<br>
+<a style=" margin-left: 500px;margin-top: 60px; width: 300px; height: 10px;padding: 15px; color: blue " href="/">Main</a>
+</body>
+</html>
